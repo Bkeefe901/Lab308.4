@@ -57,6 +57,7 @@ let items = ``;
 
 for(let i = 0; i < str.length; i++){
     if(str[i] == `\n`){
+        row.push(items);
         ourArray.push(row);
         row = [];
     }
@@ -66,6 +67,7 @@ for(let i = 0; i < str.length; i++){
     }
     else{
         if(str.length - 1 == i){
+            row.push(items);
             ourArray.push(row);
             console.log(ourArray);
         }
@@ -75,8 +77,16 @@ for(let i = 0; i < str.length; i++){
 
 }
 
+// Part 2: Expanding Functionality
 
 
+// Begin with the following task:
+
+// // Declare a variable that stores the number of columns in each row of data within the CSV.
+
+let numColumns = 0;
+
+// // Instead of hard-coding four columns per row, expand your code to accept any number of columns. This should be calculated dynamically based on the first row of data.
 
 
 
