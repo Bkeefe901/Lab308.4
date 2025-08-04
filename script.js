@@ -60,6 +60,7 @@ for(let i = 0; i < str.length; i++){
         row.push(items);
         ourArray.push(row);
         row = [];
+        items = ``;
     }
     else if(str[i] == `,`){
         row.push(items);
