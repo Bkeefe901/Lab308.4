@@ -91,7 +91,7 @@ for(let i = 0; i < str.length; i++){
 
 
 
-
+/////////////////////////////////////////////////////////////////////////////////////////
 
 // Part 3: Transforming Data
 
@@ -116,73 +116,31 @@ Keys.forEach(element => {
     keys.push(element.toLowerCase())  //converts to lowercase
 });
 
-console.log("keys are: ", keys); // test
 
-// // Final output will be 4 objects inside an array
-// // // Create an object that has the values from 'keys' as the keys and set the values to; ''
-
-let rowObject = {}; // initializing the basic object
-
-// // // // each object has the keys made up of items from first array in 'ourArray'
-let keyItem = '';
-for(let i = 0; i < keys.length; i++){ // loop to pull values from keys and creates key:value pairs in rowObject
-    keyItem = keys[i];
-    rowObject[keyItem] = '';
-}
-console.log(`Test: `, rowObject); //test
-
-
-// // // // declare array variable that hold our objects and be the final output
 
 let objectArray = []; // initialize the Array to hold our objects
 
-// // // // Flaten ourArray and save to new variable and create loop that iterates through it to fill the vaules of the object and push it to 'object Array' everytime the object gets filled with values
-
-let flatArray = ourArray.flat();
 
 
-let item = ''; 
-
-let a = 0; //initialize counter for item number in objects
-
-
-
-for(let i = 0; i < flatArray.length; i++){ //loop to iterate through each item in flatArray
-    if(a == keys.length){ //condition to see if the number of items stored in rowObject = keys.length
-        objectArray.push(rowObject);
-        a = 0;
-        i = i - 1;
-    }
-    else{
-        item = keys[a];
-        rowObject[item] = flatArray[i];
-        a++;
-
+for(let i = 0; i < ourArray.length; i++){// create outer loop to iterate through ourArray
+    let rowObject  = {}; // initialize object
+    let insideArray = ourArray[i]; //create variable equal to the array indexed inside ourArray
+    for(let i = 0; i < insideArray.length; i++){// create inner loop to iterate through items in each array inside ourArray
+        rowObject[keys[i]] = insideArray[i]; // assigns value at insideArray index to key at rowObject index
     }
 
+    objectArray.push(rowObject); // pushes the filled rowObject to objectArray
 }
-console.log(`The object array is: ${objectArray}`);
 
-// console.log("counterArray length is ",  a);
-// console.log("objectArray is ",  objectArray);
-// console.log("rowObject is ",  rowObject);
-// console.log("objectArray is ", objectArray);
-// console.log(objectArray.push(rowObject));
-// // // // Must iterate through ourArray to grab items from other arrays to grab the values
-// // // // // Should this use one loop or a different loop
+
+
+console.log(`Solution to part 4: `, objectArray); // prints solution
 
 
 
 
 
-
-//////////////////////////////////////////////////////////////////////////////////////////////
-
-
-objectArray = [{ id: "42", name: "Bruce", occupation: "Knight", age: "41" },
-                { id: "57", name: "Bob", occupation: "Fry Cook", age: "19" },
-                { id: "63", name: "Blaine", occupation: "Quiz Master", age: "58" },
-                { id: "98", name: "Bill", occupation: "Doctor’s Assistant", age: "26" }];
+//////////////////////////////////////////////////////////////////////////////////////
 
 // Part 4: Sorting and Manipulating Data
 
@@ -194,7 +152,7 @@ console.log(`This is Part 4////////////////////////`);
 
 objectArray.pop();
 
-console.log(objectArray);
+console.log(`Removing the last element of the assorted array leaves: `, objectArray);
 
 // // Insert the following object at index 1:
 // // // { id: "48", name: "Barry", occupation: "Runner", age: "25" }
@@ -202,7 +160,7 @@ console.log(objectArray);
 newItem = { id: "48", name: "Barry", occupation: "Runner", age: "25" };
 objectArray.splice(1, 0, newItem);
 
-console.log(objectArray);
+console.log('Inserting new object at index 1: ', objectArray);
 
 // // Add the following object to the end of the array:
 // // // { id: "7", name: "Bilbo", occupation: "None", age: "111" }
@@ -210,7 +168,7 @@ console.log(objectArray);
 lastItem = { id: "7", name: "Bilbo", occupation: "None", age: "111" };
 objectArray.push(lastItem);
 
-console.log(objectArray);
+console.log(`Adding new object at end of array: `, objectArray);
 
 // // Finally, use the values of each object within the array and the array’s length property to calculate the average age of the group. This calculation should be accomplished using a loop.
 
@@ -233,7 +191,7 @@ for(let i = 0; i <= objectArrayLength; i++){
 }
 console.log(`The average age is: ${avgAge}`);
 
-
+/////////////////////////////////////////////////////////////////////////
 // Part 5: Full Circle
 
 
@@ -287,22 +245,3 @@ for(let i = 0; i < flatendArray.length; i++){
 }
 console.log(flatendArray.length);
 console.log(flatendArray);
-
-// let valueString = valuesArray.join(`,`);
-// console.log(valueString);
-
-// Now create loop to add remove ',' and splice in \n every keyArray.length except at the end
-// for(let i = 0; i < keyArray.length, i++){
-
-// }
-
-
-// for(let i = 0; i < objectArrayLength; i++){
-//      if(i < objectArrayLength){
-//         valueString = valuesArray.join(`,`);
-
-//     }
-//     else{
-//         csvString += `\n`;
-//     }
-// }
