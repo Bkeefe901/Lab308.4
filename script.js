@@ -1,42 +1,5 @@
 
 
-// let cell1 = ``;
-// let cell2 = ``;
-// let cell3 = ``;
-// let cell4 = ``;
-// let commas = 0;
-
-// for(let i = 0; i < str.length; i++){
-//     if(str[i] == `,`){
-//         commas++;
-//     } else if(str[i] == `\n`){
-//         console.log(cell1, cell2, cell3, cell4);
-//         commas = 0;
-//         cell1 = ``;
-//         cell2 = ``;
-//         cell3 = ``;
-//         cell4 = ``;
-//     } else{
-//         if(commas == 0){
-//             cell1 += str[i];
-//         }
-//         else if(commas == 1){
-//             cell2 += str[i];
-//         }
-//         else if(commas == 2){
-//             cell3 += str[i];
-//         }
-//         else{
-//             cell4 += str[i];
-//         }
-//     }
-
-//     if(str.length - 1 == i){
-//         console.log(cell1, cell2, cell3, cell4);
-//     }
-// }
-
-
 // Part 1: Refactoring Old Code
 
 
@@ -92,6 +55,40 @@ let numColumns = 0;
 
 
 
+row = [];
+ourArray = [];
+items = ``;
+ 
+
+for(let i = 0; i < str.length; i++){
+    if(str[i] == `\n`){
+        row.push(items);
+        ourArray.push(row);
+        row = [];
+        items = ``;
+    }
+    else if(str[i] == `,`){
+        row.push(items);
+        items = ``;
+    }
+    else{
+        if(str.length - 1 == i){
+            row.push(items);
+            ourArray.push(row);
+            console.log(ourArray);
+        }
+        else{
+            items += str[i];}
+        }
+
+}
+
+// I realized the way I did part 1 already satisfies part 2. 
+
+
+
+
+// Part 3: Transforming Data
 
 
 
@@ -99,38 +96,90 @@ let numColumns = 0;
 
 
 
+// Implement the following:
+
+// For each row of data in the result array produced by your code above, create an object where the key of each value is the heading for that value’s column.
+
+// Convert these keys to all lowercase letters for consistency.
+
+// Store these objects in an array, in the order that they were originally listed.
+ 
+// Basic Outline
+// // Remove first array in ourArray using .shift and store in new variable called 'Keys'
+// // convert all the strings in the array 'Keys' to lower case and save it to array variable 'keys (lower case k) using forEach method
+let Keys = ourArray.shift();
+
+let keys = [];
+
+Keys.forEach(element => {
+    keys.push(element.toLowerCase())
+});
+
+console.log(keys);
+// // Final output will be 4 objects inside an array
+// // // Create loop to create the 4 objects
+// // // // Or should i just create variables for the 4 objects? 
+// // // // // or one object that we push to an array 4 times?
+
+let rowObject = {};
+
+// // // // each object has the keys made up of items from first array in 'ourArray'
+let keyItem = '';
+for(let i = 0; i < keys.length; i++){
+    keyItem = keys[i];
+    rowObject[keyItem] = '';
+}
+console.log(rowObject);
+
+
+// // // // declare array variable that hold our objects and be the final output
+
+let objectArray = [];
+
+// // // // Flaten ourArray and save to new variable and create loop that iterates through it to fill the vaules of the object and push it to 'object Array' for every row.
+// // // // Also create a variable 'numIterations' that divides the length of our flatened array by keys so that we know how many objects to create and push
+
+let flatArray = ourArray.flat();
+
+numIterations = flatArray.length / keys.length;
+
+let item = '';
+
+let counterArray = [];
+
+let a = 0;
+
+for( let i = 0; i < numIterations; i++){
+      
+    if(a < keys.length){
+        item = keys[a];
+        counterArray.push(item);
+        rowObject[item] = flatArray[a];
+        a = counterArray.length;
+    }
+     else{
+          objectArray.push(rowObject);
+          flatArray.slice(0, a);
+          item = '';
+          counterArray = [];
+          rowObject = {};
+          a = 0;
+    }
+}
+
+console.log("counterArray length is ",  a);
+console.log("objectArray is ",  objectArray);
+console.log("rowObject is ",  rowObject);
+console.log("objectArray is ", objectArray);
+console.log(objectArray.push(rowObject));
+// // // // Must iterate through ourArray to grab items from other arrays to grab the values
+// // // // // Should this use one loop or a different loop
 
 
 
 
 
 
-// for(let i = 0; i < str.length; i++){
-//     if(str[i] == `,`){
-        
-//     } else if(str[i] == `\n`){
-//         ;
-//         commas = 0;
-//         cell1 = ``;
-//         cell2 = ``;
-//         cell3 = ``;
-//         cell4 = ``;
-//     } else{
-//         if(commas == 0){
-//             cell1 += str[i];
-//         }
-//         else if(commas == 1){
-//             cell2 += str[i];
-//         }
-//         else if(commas == 2){
-//             cell3 += str[i];
-//         }
-//         else{
-//             cell4 += str[i];
-//         }
-//     }
+//////////////////////////////////////////////////////////////////////////////////////////////
 
-//     if(str.length - 1 == i){
-//         console.log(cell1, cell2, cell3, cell4);
-//     }
-// }
+
