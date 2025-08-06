@@ -183,3 +183,54 @@ console.log(objectArray.push(rowObject));
 //////////////////////////////////////////////////////////////////////////////////////////////
 
 
+objectArray = [{ id: "42", name: "Bruce", occupation: "Knight", age: "41" },
+                { id: "57", name: "Bob", occupation: "Fry Cook", age: "19" },
+                { id: "63", name: "Blaine", occupation: "Quiz Master", age: "58" },
+                { id: "98", name: "Bill", occupation: "Doctor’s Assistant", age: "26" }];
+
+// Part 4: Sorting and Manipulating Data
+
+// // Using array methods, accomplish the following tasks, in order upon the result of Part 3:
+
+// // Remove the last element from the sorted array.
+
+objectArray.pop();
+
+console.log(objectArray);
+
+// // Insert the following object at index 1:
+// // // { id: "48", name: "Barry", occupation: "Runner", age: "25" }
+
+newItem = { id: "48", name: "Barry", occupation: "Runner", age: "25" };
+objectArray.splice(1, 0, newItem);
+
+console.log(objectArray);
+
+// // Add the following object to the end of the array:
+// // // { id: "7", name: "Bilbo", occupation: "None", age: "111" }
+
+lastItem = { id: "7", name: "Bilbo", occupation: "None", age: "111" };
+objectArray.push(lastItem);
+
+console.log(objectArray);
+
+// // Finally, use the values of each object within the array and the array’s length property to calculate the average age of the group. This calculation should be accomplished using a loop.
+
+objectArrayLength = objectArray.length;
+
+let ageSum = 0;
+let ageString = '';
+let avgAge = 0;
+
+for(let i = 0; i <= objectArrayLength; i++){
+    if(i < objectArrayLength){
+        ageString = objectArray[i].age;
+        // converts the age value from a string into a integer and adds it to ageSum
+        ageSum += parseInt(ageString);
+    }
+    else{
+        avgAge = ageSum / objectArrayLength;
+    }
+
+}
+console.log(`The average age is: ${avgAge}`);
