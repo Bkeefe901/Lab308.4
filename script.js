@@ -275,9 +275,23 @@ for(let i = 0; i < objectArrayLength; i++){
 }
 console.log(valuesArray);
 
-let flatValues = valuesArray.flat()
-let valueString = valuesArray.join(`,`);
-console.log(valueString);
+// use flat here to turn valuesArray into a single 1 dimensional array 'flatendArray', then use a loop to splice in '\n' everytime keyArray.length % i == 0; except at the end.
+
+let flatendArray = valuesArray.flat()
+console.log(flatendArray);
+
+
+for(let i = 0; i < flatendArray.length; i++){
+    
+    if((i + 1) % keyArray.length == 0){
+        flatendArray.splice((i + 1), 0, '\n');
+    }
+}
+console.log(flatendArray.length);
+console.log(flatendArray);
+
+// let valueString = valuesArray.join(`,`);
+// console.log(valueString);
 
 // Now create loop to add remove ',' and splice in \n every keyArray.length except at the end
 // for(let i = 0; i < keyArray.length, i++){
