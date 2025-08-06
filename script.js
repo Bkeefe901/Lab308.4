@@ -33,13 +33,15 @@ for(let i = 0; i < str.length; i++){
         if(str.length - 1 == i){
             row.push(items);
             ourArray.push(row);
-            console.log(ourArray);
         }
         else{
             items += str[i];}
         }
 
 }
+
+console.log(ourArray);
+
 
 // Part 2: Expanding Functionality
 
@@ -48,7 +50,8 @@ for(let i = 0; i < str.length; i++){
 
 // // Declare a variable that stores the number of columns in each row of data within the CSV.
 
-let numColumns = 0;
+let numColumns = ourArray[0].length;
+console.log(numColumns);
 
 // // Instead of hard-coding four columns per row, expand your code to accept any number of columns. This should be calculated dynamically based on the first row of data.
 
@@ -115,7 +118,7 @@ Keys.forEach(element => {
     keys.push(element.toLowerCase())
 });
 
-console.log(keys);
+console.log("keys are: ", keys);
 // // Final output will be 4 objects inside an array
 // // // Create loop to create the 4 objects
 // // // // Or should i just create variables for the 4 objects? 
@@ -234,3 +237,60 @@ for(let i = 0; i <= objectArrayLength; i++){
 
 }
 console.log(`The average age is: ${avgAge}`);
+
+
+// Part 5: Full Circle
+
+// // As a final task, transform the final set of data back into CSV format.
+
+// // Basic Outline:
+// // // 1) Remove the keys out using a loop and add them to variable (csvString)
+// // // 2) Create another loop that iterates through each object in the array and pulls the value for each key and concatenates it to csvString
+// // // // a) Maybe run a loop to turn each objects values into an array. then flat() then add to string.
+
+// 1)
+
+let csvString = ``;
+let sampleObject = objectArray[0];
+let keyArray = Object.keys(sampleObject);
+
+for(let i = 0; i <= objectArrayLength; i++){
+    if(i < objectArrayLength){
+        csvString = keyArray.join(`,`);
+
+    }
+    else{
+        csvString += `\n`;
+    }
+}
+
+console.log(csvString);
+
+// 2)
+//
+let valuesArray = [];
+
+for(let i = 0; i < objectArrayLength; i++){
+    valuesArray.push(Object.values(objectArray[i]));
+}
+console.log(valuesArray);
+
+let flatValues = valuesArray.flat()
+let valueString = valuesArray.join(`,`);
+console.log(valueString);
+
+// Now create loop to add remove ',' and splice in \n every keyArray.length except at the end
+// for(let i = 0; i < keyArray.length, i++){
+
+// }
+
+
+// for(let i = 0; i < objectArrayLength; i++){
+//      if(i < objectArrayLength){
+//         valueString = valuesArray.join(`,`);
+
+//     }
+//     else{
+//         csvString += `\n`;
+//     }
+// }
