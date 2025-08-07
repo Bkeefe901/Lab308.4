@@ -53,7 +53,7 @@ console.log(`This is Part 2////////////////////////`);
 // // Declare a variable that stores the number of columns in each row of data within the CSV.
 
 let numColumns = ourArray[0].length;
-console.log(numColumns);
+// console.log(numColumns); // 
 
 // // Instead of hard-coding four columns per row, expand your code to accept any number of columns. This should be calculated dynamically based on the first row of data.
 
@@ -134,7 +134,8 @@ for(let i = 0; i < ourArray.length; i++){// create outer loop to iterate through
 
 
 
-console.log(`Solution to part 4: `, objectArray); // prints solution
+console.log(`Solution to part 3: `) 
+console.log(objectArray); // prints solution
 
 
 
@@ -168,7 +169,8 @@ console.log('Inserting new object at index 1: ', objectArray);
 lastItem = { id: "7", name: "Bilbo", occupation: "None", age: "111" };
 objectArray.push(lastItem);
 
-console.log(`Adding new object at end of array: `, objectArray);
+console.log(`Adding new object at end of array: `)
+console.log(objectArray);
 
 // // Finally, use the values of each object within the array and the array’s length property to calculate the average age of the group. This calculation should be accomplished using a loop.
 
@@ -210,38 +212,42 @@ let csvString = ``;
 let sampleObject = objectArray[0];
 let keyArray = Object.keys(sampleObject);
 
-for(let i = 0; i <= objectArrayLength; i++){
-    if(i < objectArrayLength){
-        csvString = keyArray.join(`,`);
+// console.log(`keyArray: `, keyArray); //test
 
-    }
-    else{
-        csvString += `\n`;
-    }
-}
-
-console.log(csvString);
-
-// 2)
-//
 let valuesArray = [];
 
 for(let i = 0; i < objectArrayLength; i++){
     valuesArray.push(Object.values(objectArray[i]));
 }
+// console.log(valuesArray); //test
+
+valuesArray.unshift(keyArray); // add keyArray to beginning of valuesArray
+
 console.log(valuesArray);
 
-// use flat here to turn valuesArray into a single 1 dimensional array 'flatendArray', then use a loop to splice in '\n' everytime keyArray.length % i == 0; except at the end.
+let finalStr = ``; // initialize str for csv
 
-let flatendArray = valuesArray.flat()
-console.log(flatendArray);
-let counter = 1;
+let innerString = ``;
 
-for(let i = 0; i < flatendArray.length; i++){
-    if((i + counter) % keyArray.length == 0){
-        flatendArray.splice((i + counter), 0, '\n');
-        counter += 1;
-    }
+
+
+for(let i = 0; i < valuesArray.length; i++){// create loop to iterate through valuesArray
+    let innerArray = valuesArray[i]; // declare variable equal to the array at the index i of valuesArray
+    innerString = innerArray.join(`,`); // convert items in innerArray to a string seperated by `,` and assign it to variable innerString
+    finalStr = finalStr + innerString + '\n'; // concat innerString plus a line break to finalStr
 }
-console.log(flatendArray.length);
-console.log(flatendArray);
+
+
+
+console.log(`Solution to part 5: `)
+console.log(finalStr); // prints solution
+
+
+
+
+
+
+
+
+
+
