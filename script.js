@@ -21,23 +21,23 @@ let ourArray = []; // second array to hold the row arrays
 let items = ``;
 
 for(let i = 0; i < str.length; i++){ // loop cycles through every character in str
-    if(str[i] == `\n`){ 
-        row.push(items); 
-        ourArray.push(row); 
-        row = [];
-        items = ``;
+    if(str[i] == `\n`){  // test for page break
+        row.push(items); // pushes final item to row
+        ourArray.push(row); // pushes row to ourArray
+        row = []; // reset row
+        items = ``; // reset item
     }
-    else if(str[i] == `,`){
-        row.push(items);
-        items = ``;
+    else if(str[i] == `,`){ // test if comma
+        row.push(items); // just pushes item to row
+        items = ``; // and resets item
     }
-    else{
-        if(str.length - 1 == i){
-            row.push(items);
-            ourArray.push(row);
+    else{ 
+        if(str.length - 1 == i){ //test if its the final index value (because the final value isn't a `,` or `\n`)
+            row.push(items); // pushes final item to row
+            ourArray.push(row); // pushes final row to array
         }
         else{
-            items += str[i];}
+            items += str[i];} // adds string character at index to items for any character
         }
 
 }
